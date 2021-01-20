@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+let port = 80 || 443 || 3000;
 
 app.use(express.json());
 
@@ -20,4 +21,4 @@ app.get('/:id', (req, res) => {
   return res.json({pagina: id})
 })
 
-app.listen(3000, () => console.log('SERVER STARTED!'));
+app.listen(port, () => console.log('SERVER STARTED!'));
