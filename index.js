@@ -3,6 +3,14 @@ const app = express();
 
 app.use(express.json());
 
+app.use('*', (req,res, next) => {
+  if (req.headers['x-forwarded-proto'] == 'https') {
+    return next();
+  } else {
+    return res.redirect('https://' + req.headers.host + req.headers.originalUrl);
+  }
+})
+
 app.get('/', (req, res) => {
   return res.json({ pagina: 'este e o meu site HTTPS'})
 });
