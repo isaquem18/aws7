@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('*', (req,res, next) => {
+app.use('/*', (req,res, next) => {
   if (req.headers['x-forwarded-proto'] == 'https') {
     return next();
   } else {
